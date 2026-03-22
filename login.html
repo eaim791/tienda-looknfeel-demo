@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi cuenta — LOOK N FEEL</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:   #0A098D;
+  --fog:   #A0A9B4;
+  --haze:  #898FA1;
+  --dusk:  #383F4D;
+  --mist:  #8C97B6;
+  --coal:  #1C2030;
+  --paper: #F0F2F5;
+  --cloud: #E2E5EC;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--paper);
+  color: var(--coal);
+  min-height: 100svh;
+  display: flex; flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; }
+
+/* ── NAV strip ── */
+.top-bar {
+  background: var(--coal);
+  padding: 0 24px;
+  height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0;
+}
+.top-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px; letter-spacing: 0.1em;
+  color: white;
+}
+.top-back {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  display: flex; align-items: center; gap: 6px;
+  transition: color 0.2s;
+}
+.top-back:hover { color: white; }
+
+/* ── Main layout ── */
+.auth-wrap {
+  flex: 1;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 48px 20px;
+}
+
+/* ── Tabs ── */
+.auth-tabs {
+  display: flex; gap: 0;
+  border: 1px solid var(--cloud);
+  margin-bottom: 32px;
+  background: white;
+}
+.tab-btn {
+  flex: 1; padding: 12px 32px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--haze);
+  background: transparent;
+  transition: all 0.2s;
+  border: none;
+}
+.tab-btn.active {
+  background: var(--ink); color: white;
+}
+
+/* ── Card ── */
+.auth-card {
+  width: 100%; max-width: 440px;
+  background: white;
+  border: 1px solid var(--cloud);
+  padding: 40px 36px 44px;
+}
+@media (max-width: 480px) {
+  .auth-card { padding: 28px 20px 32px; }
+}
+
+.auth-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px; letter-spacing: 0.06em;
+  color: var(--coal); margin-bottom: 6px;
+}
+.auth-sub {
+  font-size: 13px; color: var(--haze); margin-bottom: 28px; line-height: 1.5;
+}
+
+/* ── Form ── */
+.field { margin-bottom: 18px; }
+.field label {
+  display: block;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--dusk); margin-bottom: 7px;
+}
+.field input {
+  width: 100%;
+  border: 1px solid var(--cloud);
+  padding: 12px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px; color: var(--coal);
+  outline: none; background: var(--paper);
+  transition: border-color 0.2s, background 0.2s;
+}
+.field input:focus {
+  border-color: var(--ink); background: white;
+}
+.field input::placeholder { color: var(--fog); }
+
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.forgot {
+  display: block; text-align: right;
+  font-size: 11px; color: var(--haze);
+  margin-top: -10px; margin-bottom: 22px;
+  transition: color 0.2s;
+}
+.forgot:hover { color: var(--ink); }
+
+.submit-btn {
+  width: 100%;
+  background: var(--ink); color: white;
+  padding: 14px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  transition: background 0.2s;
+  margin-top: 4px;
+}
+.submit-btn:hover { background: var(--dusk); }
+
+.or-divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: 24px 0;
+}
+.or-divider::before, .or-divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--cloud);
+}
+.or-divider span {
+  font-size: 10px; color: var(--haze); letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+.social-login {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.social-btn-item {
+  width: 100%;
+  border: 1px solid var(--cloud); background: white;
+  padding: 11px; font-size: 13px; font-weight: 500;
+  color: var(--dusk); display: flex; align-items: center; justify-content: center; gap: 10px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.social-btn-item:hover { border-color: var(--ink); background: var(--paper); }
+.social-icon { font-size: 16px; }
+
+.terms {
+  font-size: 11px; color: var(--haze);
+  line-height: 1.6; margin-top: 20px; text-align: center;
+}
+.terms a { color: var(--ink); border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.terms a:hover { border-color: var(--ink); }
+
+/* ── Form panels ── */
+.form-panel { display: none; }
+.form-panel.active { display: block; }
+
+/* ── Footer ── */
+.auth-footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 11px; color: var(--haze); letter-spacing: 0.04em;
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a class="top-logo" href="tienda.html">LOOK N FEEL</a>
+  <a href="tienda.html" class="top-back">← Volver a la tienda</a>
+</div>
+
+<div class="auth-wrap">
+
+  <div class="auth-tabs">
+    <button class="tab-btn active" onclick="switchTab('login', this)">Iniciar sesión</button>
+    <button class="tab-btn" onclick="switchTab('register', this)">Crear cuenta</button>
+  </div>
+
+  <div class="auth-card">
+
+    <!-- LOGIN -->
+    <div class="form-panel active" id="panel-login">
+      <div class="auth-title">Bienvenido</div>
+      <p class="auth-sub">Ingresá a tu cuenta para ver tus pedidos y más.</p>
+
+      <div class="field">
+        <label>Email</label>
+        <input type="email" placeholder="tu@mail.com" autocomplete="email">
+      </div>
+      <div class="field">
+        <label>Contraseña</label>
+        <input type="password" placeholder="••••••••" autocomplete="current-password">
+      </div>
+      <a href="#" class="forgot">¿Olvidaste tu contraseña?</a>
+      <button class="submit-btn">Ingresar</button>
+
+      <div class="or-divider"><span>o continuá con</span></div>
+      <div class="social-login">
+        <button class="social-btn-item">
+          <span class="social-icon">G</span> Google
+        </button>
+        <button class="social-btn-item">
+          <span class="social-icon">f</span> Facebook
+        </button>
+      </div>
+    </div>
+
+    <!-- REGISTER -->
+    <div class="form-panel" id="panel-register">
+      <div class="auth-title">Crear cuenta</div>
+      <p class="auth-sub">Unite a la comunidad Look N Feel.</p>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Nombre</label>
+          <input type="text" placeholder="Juan">
+        </div>
+        <div class="field">
+          <label>Apellido</label>
+          <input type="text" placeholder="García">
+        </div>
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" placeholder="tu@mail.com" autocomplete="email">
+      </div>
+      <div class="field">
+        <label>Contraseña</label>
+        <input type="password" placeholder="Mínimo 8 caracteres" autocomplete="new-password">
+      </div>
+      <div class="field">
+        <label>Confirmar contraseña</label>
+        <input type="password" placeholder="Repetí tu contraseña" autocomplete="new-password">
+      </div>
+      <button class="submit-btn">Crear cuenta</button>
+
+      <p class="terms">
+        Al crear tu cuenta aceptás nuestros
+        <a href="#">Términos y condiciones</a> y
+        <a href="#">Política de privacidad</a>.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<div class="auth-footer">© 2025 Look N Feel · Buenos Aires, Argentina</div>
+
+<script>
+  // Auto-switch to register tab if URL has #register
+  if (window.location.hash === '#register') {
+    switchTab('register', document.querySelectorAll('.tab-btn')[1]);
+  }
+
+  function switchTab(panel, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + panel).classList.add('active');
+  }
+</script>
+</body>
+</html>
